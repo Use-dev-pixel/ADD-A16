@@ -1,0 +1,51 @@
+package org.jsp.executestatement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ExecuteQuery {
+	public static void main(String[] args) {
+		try {
+			//Step1 Load And register driver class
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			//Step 2 Establish connection
+			String url="jdbc:mysql://localhost:3306/a16";
+			String userName="root";
+			String password="rootroot";
+			Connection connection=DriverManager.getConnection(url, userName, password);
+			
+			//Step 3 Create Platform
+			Statement statement=connection.createStatement();
+
+			//Step 4
+			String sql="SELECT * FROM users where id=1";
+			ResultSet bro=statement.executeQuery(sql);
+			
+			if (bro.next()) {
+				System.out.println("Id : "+ bro.getInt(1));
+				System.out.println("Name : "+ bro.getString(2));
+				System.out.println("Email : "+ bro.getString("email"));
+				System.out.println("Password : "+ bro.getString("password"));
+				System.out.println("==================================");
+			}else {
+				throw new RuntimeException("No user found");
+			}
+			
+			
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+}
