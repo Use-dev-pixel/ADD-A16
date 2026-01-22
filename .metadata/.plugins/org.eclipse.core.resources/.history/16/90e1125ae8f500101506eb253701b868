@@ -1,11 +1,12 @@
-package org.jsp.executestatement;
+package org.jsp.create_platform;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ExecuteUpdate {
+public class CreatePlatformWay2 {
 	public static void main(String[] args) {
 		try {
 			//Step1 Load And register driver class
@@ -18,17 +19,16 @@ public class ExecuteUpdate {
 			Connection connection=DriverManager.getConnection(url, userName, password);
 			
 			//Step 3 Create Platform
-			Statement statement=connection.createStatement();
-
-			//Step 4
-//			String sql="CREATE TABLE Dept(id int(10) primary key, name varchar(50) ,email varchar(50) unique,password varchar(50) not null)";
-//			statement.executeUpdate(sql);
-//			System.out.println("Table Created");
+			PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO users VALUES(?,?,?,?)");
+			preparedStatement.setInt(1, 3);
+			preparedStatement.setString(2, "Sita");
+			preparedStatement.setString(3, "sita@supergot.in");
+			preparedStatement.setString(4, "Sita@Ram12345");
 			
-//			String sql="INSERT INTO users VALUES(2,'Ram','ram@god.com','Sita@nlySita')";
-			String sql="UPDATE users set password='sita@12345' where id=2";
-			System.out.println(statement.executeUpdate(sql));
-			System.out.println("Value Inserted");
+			//Step 4 Execute Statement
+			preparedStatement.executeUpdate();
+			System.out.println("Data Inserted");
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

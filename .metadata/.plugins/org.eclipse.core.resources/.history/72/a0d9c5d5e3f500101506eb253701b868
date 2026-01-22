@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ExecuteUpdate {
+public class Execute {
 	public static void main(String[] args) {
 		try {
 			//Step1 Load And register driver class
@@ -21,14 +21,14 @@ public class ExecuteUpdate {
 			Statement statement=connection.createStatement();
 
 			//Step 4
-//			String sql="CREATE TABLE Dept(id int(10) primary key, name varchar(50) ,email varchar(50) unique,password varchar(50) not null)";
-//			statement.executeUpdate(sql);
+//			String sql="CREATE TABLE users(id int(10) primary key, name varchar(50) ,email varchar(50) unique,password varchar(50) not null)";
+//			statement.execute(sql);
 //			System.out.println("Table Created");
 			
 //			String sql="INSERT INTO users VALUES(2,'Ram','ram@god.com','Sita@nlySita')";
-			String sql="UPDATE users set password='sita@12345' where id=2";
-			System.out.println(statement.executeUpdate(sql));
-			System.out.println("Value Inserted");
+//			String sql="SELECT * FROM users";
+//			System.out.println(statement.execute(sql));
+//			System.out.println("Value Inserted");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class CreatePlatformWay2 {
 	public static void main(String[] args) {
@@ -25,15 +24,10 @@ public class CreatePlatformWay2 {
 			preparedStatement.setString(3, "sita@supergot.in");
 			preparedStatement.setString(4, "Sita@Ram12345");
 			
-			
-			
-			
 			//Step 4 Execute Statement
 			preparedStatement.executeUpdate();
-			
-			
-			
 			System.out.println("Data Inserted");
+//			https://tinyurl.com/GitLink123
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -42,6 +36,5 @@ public class CreatePlatformWay2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 }

@@ -26,13 +26,9 @@ public class Execute {
 //			System.out.println("Table Created");
 			
 //			String sql="INSERT INTO users VALUES(2,'Ram','ram@god.com','Sita@nlySita')";
-//			String sql="SELECT * FROM users";
-//			System.out.println(statement.execute(sql));
+			String sql="SELECT * FROM users";
+			System.out.println(statement.execute(sql));//true
 //			System.out.println("Value Inserted");
-			
-			
-			
-			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

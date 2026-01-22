@@ -29,10 +29,6 @@ public class CreatePlatformWay1 {
 //			String sql="SELECT * FROM users";
 //			System.out.println(statement.execute(sql));
 //			System.out.println("Value Inserted");
-			
-			
-			
-			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
