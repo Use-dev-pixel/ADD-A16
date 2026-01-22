@@ -1,0 +1,58 @@
+package org.jsp.close;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CloseCostlyResource {
+	public static void main(String[] args) {
+
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet set = null;
+		
+		try {
+			// Step1 Load And register driver class
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// Step 2 Establish connection
+			String url = "jdbc:mysql://localhost:3306/a16";
+			String userName = "root";
+			String password = "rootroot";
+			connection = DriverManager.getConnection(url, userName, password);
+
+			// Step 3 Create Platform
+			statement = connection.createStatement();
+
+			// Step 4
+			String sql = "SELECT * FROM users";
+			set = statement.executeQuery(sql);
+
+			while (set.next()) {
+				String user = "User[ id : " + set.getInt("id") + " ,Name : " + set.getString("name") + " ,Email : "
+						+ set.getString("email") + " ,Password : " + set.getString("password") + "]";
+
+				System.out.println(user);
+			}
+
+			// step 5
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// closing result set
+			set.close();
+			// closing statement
+			statement.close();
+			// closing connection
+			connection.close();
+		}
+
+	}
+}
