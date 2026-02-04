@@ -1,6 +1,7 @@
 package org.jsp;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,20 +19,21 @@ public class Login extends GenericServlet {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 
-		try {
-				
-			Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection connection = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/hospitalsystem","root","rootroot");
-				PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE email=?");
+		PrintWriter out = resp.getWriter();
 
-		
+		try {
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalsystem", "root",
+					"rootroot");
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE email=?");
+
 			preparedStatement.setString(1, email);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 				String dbPassword = resultSet.getString("password");
 				if (dbPassword.equals(password)) {
-					System.out.println("Login Successful");
+					out.println("<h1> Login Successful</h1>");
 				} else {
 					throw new RuntimeException("Password Invalid");
 				}
