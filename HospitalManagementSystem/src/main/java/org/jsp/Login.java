@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -33,12 +34,18 @@ public class Login extends GenericServlet {
 			if (resultSet.next()) {
 				String dbPassword = resultSet.getString("password");
 				if (dbPassword.equals(password)) {
-					out.println("<h1> Login Successful</h1>");
+					// Moves to HomePage
+					RequestDispatcher dispatcher = req.getRequestDispatcher("homepage");// php,html,jsp,servlet
+					dispatcher.forward(req, resp);
 				} else {
-					throw new RuntimeException("Password Invalid");
+					RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
+					out.println("<h1>Invalid Password</h1>");
+					dispatcher.include(req, resp);
 				}
 			} else {
-				throw new RuntimeException("User Not Found With email : " + email);
+				RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
+				out.println("<h1>Invalid Email</h1>");
+				dispatcher.include(req, resp);
 			}
 
 		} catch (Exception e) {
