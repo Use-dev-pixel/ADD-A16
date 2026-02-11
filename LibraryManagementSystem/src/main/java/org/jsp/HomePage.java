@@ -14,6 +14,15 @@ public class HomePage extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		String name = req.getParameter("name");
 
+		out.print("<html>");
+		out.print("<body>");
 		out.print("<h1>Hi...." + name + "</h1>");
+		out.print("<a href='display_all'><button>Display All</button></h1>");
+		out.print("</body>");
+		out.print("</html>");
+		
+		
+		
+		
 	}
 }
