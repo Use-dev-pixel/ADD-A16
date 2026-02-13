@@ -40,8 +40,13 @@ public class Login extends HttpServlet {
 				if (dbPassword.equals(password)) {
 					// Moves to HomePage
 					String name = resultSet.getString("name");
+
 					HttpSession session = req.getSession();
-					session.setAttribute("name",name );
+					session.setAttribute("name", name);
+					session.setAttribute("password", password);
+					session.setAttribute("email", password);
+					long number = resultSet.getLong("number");
+					session.setAttribute("number", number);
 
 					RequestDispatcher dispatcher = req.getRequestDispatcher("homepage");// php,html,jsp,servlet
 					dispatcher.forward(req, resp);
