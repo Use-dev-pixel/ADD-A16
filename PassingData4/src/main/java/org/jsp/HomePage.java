@@ -22,6 +22,7 @@ public class HomePage extends HttpServlet {
 		out.print("<h1>Hi...." + name + "</h1>");
 		out.print("<a href='display_all'><button>Display All</button></h1>");
 		out.print("<a href='profile'><button>Profile</button></h1>");
+		out.print("<a href='logout'><button>Logout</button></h1>");
 		out.print("</body>");
 		out.print("</html>");
 		

@@ -20,11 +20,22 @@ public class Profile extends HttpServlet {
 
 		String name = (String) session.getAttribute("name");
 		String email = (String) session.getAttribute("email");
+		String password = (String) session.getAttribute("password");
+		long number = (Long) session.getAttribute("number");
+
 		out.println("<h1>Profile</h1>");
 		out.println("<form action='update' method='post'>");
-		out.println("Name: <input type='text' value=" + name + " name='name' >");
-		out.println("Email: <input type='email' value=" + email + " name='email' readonly  >");
+		out.println("Name: <input type='text' value=" + name + " name='name'> <br>");
+		out.println("Email: <input type='email' value=" + email + " name='email'><br>");
+		out.println("Password: <input type='password' value=" + password + " name='password'><br>");
+		out.println("Number: <input type='tel' value=" + number + " name='number'><br>");
+		out.println("<button> Update</button>");
 		out.println("</form>");
+		out.println("<form action='homepage' method='post'>");
+		out.println("<button> HomePage</button>");
+		out.println("</form>");
+		
+		
 
 	}
 }

@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
 					HttpSession session = req.getSession();
 					session.setAttribute("name", name);
 					session.setAttribute("password", password);
-					session.setAttribute("email", password);
+					session.setAttribute("email", email);
 					long number = resultSet.getLong("number");
 					session.setAttribute("number", number);
 
